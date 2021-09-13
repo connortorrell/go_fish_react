@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import PlayView from './PlayView'
+import GameView from './GameView'
+import Player from './Player'
+import Game from './Game'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  joinGame(name) {
+    this.setState((state, props) => {
+      const player = new Player(name)
+      const game = new Game(player)
+      return { game }
+    })
+  }
+
+  render() {
+    if(this.state.game) {
+      return <GameView game={this.state.game}/>
+    } else{
+      return <PlayView onPlay={this.joinGame.bind(this)}/>
+    }
+  }
 }
 
 export default App;
