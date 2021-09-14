@@ -17,6 +17,13 @@ describe('GameView', () => {
   it('shows the number of cards in the deck', () => {
     const wrapper = render(<GameView game={game} onAsk={onAsk} />)
 
-    expect(wrapper.getByText(`Cards left in deck: ${game.deck().cardsLeft()}`)).toBeInTheDocument
+    expect(wrapper.getByText(`Cards left in deck: ${game.deck().cardsLeft()}`)).toBeInTheDocument()
+  })
+
+  it('shows the player hand', () => {
+    const wrapper = render(<GameView game={game} onAsk={onAsk} />)
+
+    expect(wrapper.getByText('Your hand:')).toBeInTheDocument()
+    player.hand().forEach(card => expect(wrapper.getByText(card.rank())).toBeInTheDocument()) //fails when duplicate cards are in the hand
   })
 })

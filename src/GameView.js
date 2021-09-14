@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import HandView from './HandView'
 
 class GameView extends React.Component {
   static propTypes = {
     game: PropTypes.object.isRequired
-  }
-
-  onClick(event) {
-    event.preventDefault()
-    // this.props.onAsk()
   }
 
   render() {
@@ -16,14 +12,12 @@ class GameView extends React.Component {
     return (
       <div>
         <h1>Your turn!</h1>
-        {this._renderDeck(game.deck().cardsLeft())}
+        <h2>Cards left in deck: {game.deck().cardsLeft()}</h2>
+        <HandView hand={game.player().hand()}/>
       </div>
     )
   }
 
-  _renderDeck(cardsLeft) {
-    return <h2>Cards left in deck: {cardsLeft}</h2>
-  }
 }
 
 export default GameView
