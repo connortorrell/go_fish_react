@@ -1,6 +1,6 @@
 import React from 'react'
 import PlayView from './PlayView'
-import GameView from './GameView'
+import LobbyView from './LobbyView'
 import Player from './Player'
 import Game from './Game'
 
@@ -21,7 +21,7 @@ class App extends React.Component {
 
   render() {
     if(this.state.game) {
-      return <GameView game={this.state.game}/>
+      return <LobbyView game={this.state.game}/>
     } else{
       return <PlayView onPlay={this.joinGame.bind(this)}/>
     }

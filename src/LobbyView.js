@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class GameView extends React.Component {
+class LobbyView extends React.Component {
   static propTypes = {
     game: PropTypes.object.isRequired
   }
@@ -33,4 +33,4 @@ class GameView extends React.Component {
   }
 }
 
-export default GameView
+export default LobbyView
