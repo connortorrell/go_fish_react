@@ -16,6 +16,9 @@ class Game {
     return this._bots
   }
 
+  start() {
+  }
+
   _createBots(numberOfBots) {
     return [...Array(numberOfBots)].map((_, i) => new Bot(Game.botNames[i]))
   }

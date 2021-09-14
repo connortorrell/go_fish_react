@@ -3,7 +3,13 @@ import PropTypes from 'prop-types'
 
 class LobbyView extends React.Component {
   static propTypes = {
-    game: PropTypes.object.isRequired
+    game: PropTypes.object.isRequired,
+    onStart: PropTypes.func.isRequired
+  }
+
+  onClick(event) {
+    event.preventDefault()
+    this.props.onStart()
   }
 
   render() {
@@ -13,6 +19,7 @@ class LobbyView extends React.Component {
         <h1>Welcome to Go Fish!</h1>
         {this._renderPlayer(game.player().name())}
         {this._renderBots(game.bots())}
+        <button id="start" onClick={this.onClick.bind(this)}>Start</button>
       </div>
     )
   }
