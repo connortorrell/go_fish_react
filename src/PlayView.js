@@ -29,9 +29,9 @@ class PlayView extends React.Component {
     return (
       <div>
         <h1>Go Fish</h1>
-        <form className="user-form" onSubmit={(e) => this.onSubmit(e)}>
+        <form className="user-form" onSubmit={this.onSubmit.bind(this)}>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" onChange={(e) => this.onTyping(e.target.value)} value={this.state.name}/>
+          <input type="text" id="name" onChange={(event) => this.onTyping(event.target.value)} value={this.state.name}/>
 
           <input id="play" type="submit" value="Play"/>
         </form>

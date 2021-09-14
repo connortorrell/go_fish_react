@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   joinGame(name) {
-    this.setState((state, props) => {
+    this.setState(() => {
       const player = new Player(name)
       const game = new Game(player)
       return { game }
