@@ -12,7 +12,7 @@ describe('LobbyView', () => {
     const onStart = jest.fn()
     const wrapper = render(<LobbyView game={game} onStart={onStart} />)
 
-    expect(wrapper.getByText(`You: ${name}`))
+    expect(wrapper.getByText(`You: ${name}`)).toBeInTheDocument
   })
 
   it('shows the bots', () => {
@@ -21,8 +21,8 @@ describe('LobbyView', () => {
     const onStart = jest.fn()
     const wrapper = render(<LobbyView game={game} onStart={onStart} />)
 
-    expect(wrapper.getByText('Bots:'))
-    Game.botNames.forEach(botName => expect(wrapper.getByText(botName)))
+    expect(wrapper.getByText('Bots:')).toBeInTheDocument
+    Game.botNames.forEach(botName => expect(wrapper.getByText(botName)).toBeInTheDocument)
   })
 
   it('calls onStart prop on form submission', () => {
