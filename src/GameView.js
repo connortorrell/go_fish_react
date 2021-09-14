@@ -8,7 +8,28 @@ class GameView extends React.Component {
 
   render() {
     const { game } = this.props
-    return <h1>{game.player().name()}</h1>
+    return (
+      <div>
+        <h1>Welcome to Go Fish!</h1>
+        {this._renderPlayer(game.player().name())}
+        {this._renderBots(game.bots())}
+      </div>
+    )
+  }
+
+  _renderPlayer(name) {
+    return <h2>You: {name}</h2>
+  }
+
+  _renderBots(bots) {
+    return (
+      <div>
+        <h2>Bots:</h2>
+        <ul>
+          {bots.map(bot => <li key={bot.name()}>{bot.name()}</li>)}
+        </ul>
+      </div>
+    )
   }
 }
 
