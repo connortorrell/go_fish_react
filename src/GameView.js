@@ -8,17 +8,21 @@ class GameView extends React.Component {
 
   onClick(event) {
     event.preventDefault()
-    // this.props.onStart()
+    // this.props.onAsk()
   }
 
   render() {
     const { game } = this.props
     return (
       <div>
-        <h1>Welcome to Go Fish!</h1>
-        <button id="ask" onClick={this.onClick.bind(this)}>Ask</button>
+        <h1>Your turn!</h1>
+        {this._renderDeck(game.deck().cardsLeft())}
       </div>
     )
+  }
+
+  _renderDeck(cardsLeft) {
+    return <h2>Cards left in deck: {cardsLeft}</h2>
   }
 }
 

@@ -5,32 +5,24 @@ import Player from '../Player'
 import Game from '../Game'
 
 describe('LobbyView', () => {
-  it('shows the player', () => {
-    const name = 'Player1'
-    const player = new Player(name)
-    const game = new Game(player)
-    const onStart = jest.fn()
-    const wrapper = render(<LobbyView game={game} onStart={onStart} />)
+  const name = 'Player1'
+  const player = new Player(name)
+  const game = new Game(player)
+  const onStart = jest.fn()
 
+  it('shows the player', () => {
+    const wrapper = render(<LobbyView game={game} onStart={onStart} />)
     expect(wrapper.getByText(`You: ${name}`)).toBeInTheDocument
   })
 
   it('shows the bots', () => {
-    const player = new Player('Player1')
-    const game = new Game(player)
-    const onStart = jest.fn()
     const wrapper = render(<LobbyView game={game} onStart={onStart} />)
-
     expect(wrapper.getByText('Bots:')).toBeInTheDocument
     Game.botNames.forEach(botName => expect(wrapper.getByText(botName)).toBeInTheDocument)
   })
 
   it('calls onStart prop on form submission', () => {
-    const player = new Player('Player1')
-    const game = new Game(player)
-    const onStart = jest.fn()
     const wrapper = render(<LobbyView game={game} onStart={onStart} />)
-
     fireEvent.click(wrapper.getByText(/Start/i))
 
     expect(onStart).toBeCalled()

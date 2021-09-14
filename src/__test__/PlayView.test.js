@@ -3,8 +3,9 @@ import { render, fireEvent } from '@testing-library/react'
 import PlayView from '../PlayView'
 
 describe('PlayView', () => {
+  const onPlay = jest.fn()
+
   it('calls onPlay prop on form submission with name', () => {
-    const onPlay = jest.fn()
     const wrapper = render(<PlayView onPlay={onPlay} />)
 
     fireEvent.change(wrapper.getByLabelText(/Name/i), { target: { value: 'Player1' } })
@@ -15,7 +16,6 @@ describe('PlayView', () => {
   })
 
   it('requires a name to be entered to play', () => {
-    const onPlay = jest.fn()
     const wrapper = render(<PlayView onPlay={onPlay} />)
     const nameInput = wrapper.getByLabelText(/Name/i)
 
