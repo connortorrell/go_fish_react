@@ -5,7 +5,7 @@ class Game {
 
   constructor(player, numberOfBots = 3) {
     this._player = player
-    this._bots = this.createBots(numberOfBots)
+    this._bots = this._createBots(numberOfBots)
   }
 
   player() {
@@ -16,7 +16,7 @@ class Game {
     return this._bots
   }
 
-  createBots(numberOfBots) {
+  _createBots(numberOfBots) {
     return [...Array(numberOfBots)].map((_, i) => new Bot(Game.botNames[i]))
   }
 }

@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {}
   }
 
-  joinGame(name) {
+  _joinGame(name) {
     this.setState(() => {
       const player = new Player(name)
       const game = new Game(player)
@@ -23,7 +23,7 @@ class App extends React.Component {
     if(this.state.game) {
       return <LobbyView game={this.state.game}/>
     } else{
-      return <PlayView onPlay={this.joinGame.bind(this)}/>
+      return <PlayView onPlay={this._joinGame.bind(this)}/>
     }
   }
 }
