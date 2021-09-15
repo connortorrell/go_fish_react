@@ -24,6 +24,6 @@ describe('GameView', () => {
     const wrapper = render(<GameView game={game} onAsk={onAsk} />)
 
     expect(wrapper.getByText('Your hand:')).toBeInTheDocument()
-    player.hand().forEach(card => expect(wrapper.getByText(card.rank())).toBeInTheDocument()) //fails when duplicate cards are in the hand
+    player.hand().forEach(card => expect(wrapper.getAllByText(card.rank())).toBeTruthy())
   })
 })
