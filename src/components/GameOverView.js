@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RoundResultList from './RoundResultList'
+import GameResultList from './GameResultList'
 import Standings from './Standings'
 
 class GameOverView extends React.Component {
@@ -20,7 +20,7 @@ class GameOverView extends React.Component {
       <div>
         <h1>Game over!</h1>
         <Standings standings={game.standings()} player={game.player()} />
-        <RoundResultList roundResults={game.roundResults()} player={game.player()} />
+        <GameResultList gameResults={game.results()} player={game.player()} />
         <button id="playAgain" onClick={this.onClick.bind(this)}>Play again</button>
       </div>
     )
