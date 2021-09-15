@@ -20,7 +20,6 @@ describe('GameOverView', () => {
     expect(wrapper.getByText(`${game.player().name()} (Books: ${game.player().books()})`)).toBeInTheDocument()
   })
 
-
   it('calls the passed in function', () => {
     fireEvent.click(wrapper.getByText(/Play again/i))
 
