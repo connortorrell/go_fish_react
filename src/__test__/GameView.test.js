@@ -31,24 +31,24 @@ describe('GameView', () => {
 
   it('shows the opponents', () => {
     expect(wrapper.getByText('Opponents:')).toBeInTheDocument()
-    game.bots().forEach(bot => expect(wrapper.getByText(bot.name())).toBeInTheDocument())
+    game.bots().forEach(bot => expect(wrapper.getByText(`${bot.name()} (Cards left: ${bot.cardsLeft()}) (Books: ${bot.books()})`)).toBeInTheDocument())
   })
 
   it('calls onAsk prop on form submission', () => {
     const rank = game.player().hand()[0].rank()
-    const opponentName = game.bots()[0].name()
+    const opponent = game.bots()[0]
 
     fireEvent.click(wrapper.getAllByLabelText(rank)[0])
-    fireEvent.click(wrapper.getByLabelText(opponentName))
+    fireEvent.click(wrapper.getByLabelText(`${opponent.name()} (Cards left: ${opponent.cardsLeft()}) (Books: ${opponent.books()})`))
     fireEvent.click(wrapper.getByText(/Ask/i))
 
     expect(onAsk).toBeCalled()
   })
 
   it('does not call onAsk prop on form submission if rank is not selected', () => {
-    const opponentName = game.bots()[0].name()
+    const opponent = game.bots()[0]
 
-    fireEvent.click(wrapper.getByLabelText(opponentName))
+    fireEvent.click(wrapper.getByLabelText(`${opponent.name()} (Cards left: ${opponent.cardsLeft()}) (Books: ${opponent.books()})`))
     fireEvent.click(wrapper.getByText(/Ask/i))
 
     expect(onAsk).not.toBeCalled()

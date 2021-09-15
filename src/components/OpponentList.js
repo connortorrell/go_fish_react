@@ -15,7 +15,7 @@ class OpponentList extends React.Component {
           return (
             <div key={opponent.name()}>
               <input type="radio" id={opponent.name()} name="opponentName" value={opponent.name()} required />
-              <label htmlFor={opponent.name()}>{opponent.name()}</label>
+              <label htmlFor={opponent.name()}>{opponent.name()} (Cards left: {opponent.cardsLeft()}) (Books: {opponent.books()})</label>
             </div>
           )
         })}
