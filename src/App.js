@@ -4,6 +4,7 @@ import LobbyView from './components/LobbyView'
 import GameView from './components/GameView'
 import Player from './models/Player'
 import Game from './models/Game'
+import GameOverView from './components/GameOverView'
 
 class App extends React.Component {
   static gameStatusStarted = 'started'
@@ -43,12 +44,18 @@ class App extends React.Component {
     }
   }
 
+  _playAgain() {
+    this.setState(() => {
+      return {}
+    })
+  }
+
   render() {
     if(this.state.game) {
       if(this.state.gameStatus === App.gameStatusStarted) {
         return <GameView game={this.state.game} onAsk={this._ask.bind(this)} />
       } else if(this.state.gameStatus === App.gameStatusOver) {
-        // return <GameOverView game={this.state.game} onPlayAgain={this._playAgain.bind(this)} />
+        return <GameOverView game={this.state.game} onPlayAgain={this._playAgain.bind(this)} />
       } else {
         return <LobbyView game={this.state.game} onStart={this._startGame.bind(this)}/>
       }
