@@ -22,14 +22,9 @@ class Game {
     return this._deck
   }
 
-  isStarted() {
-    return this._isStarted
-  }
-
   start() {
     this._deck = new Deck
     this._deal()
-    this._isStarted = true
   }
 
   _deal() {

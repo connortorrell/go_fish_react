@@ -1,5 +1,5 @@
-import Deck from '../Deck'
-import Card from '../Card'
+import Deck from '../models/Deck'
+import Card from '../models/Card'
 
 describe('Deck', () => {
   const totalNumberOfCards = 52

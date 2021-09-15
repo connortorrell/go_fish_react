@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HandView from './HandView'
+import Hand from './Hand'
 
 class GameView extends React.Component {
   static propTypes = {
@@ -13,11 +13,10 @@ class GameView extends React.Component {
       <div>
         <h1>Your turn!</h1>
         <h2>Cards left in deck: {game.deck().cardsLeft()}</h2>
-        <HandView hand={game.player().hand()}/>
+        <Hand hand={game.player().hand()}/>
       </div>
     )
   }
-
 }
 
 export default GameView

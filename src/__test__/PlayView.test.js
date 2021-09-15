@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import PlayView from '../PlayView'
+import PlayView from '../components/PlayView'
 
 describe('PlayView', () => {
   const onPlay = jest.fn()

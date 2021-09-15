@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import LobbyView from '../LobbyView'
-import Player from '../Player'
-import Game from '../Game'
+import LobbyView from '../components/LobbyView'
+import Player from '../models/Player'
+import Game from '../models/Game'
 
 describe('LobbyView', () => {
   const name = 'Player1'

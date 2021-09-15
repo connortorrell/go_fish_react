@@ -1,5 +1,5 @@
-import Card from '../Card'
-import Player from '../Player'
+import Card from '../models/Card'
+import Player from '../models/Player'
 
 describe('Player', () => {
   const name = 'Player1'

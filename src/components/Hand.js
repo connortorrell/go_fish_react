@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class HandView extends React.Component {
+class Hand extends React.Component {
   static propTypes = {
     hand: PropTypes.array.isRequired
   }
@@ -19,4 +19,4 @@ class HandView extends React.Component {
   }
 }
 
-export default HandView
+export default Hand

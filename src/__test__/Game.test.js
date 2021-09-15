@@ -1,6 +1,6 @@
-import Game from '../Game'
-import Player from '../Player'
-import Deck from '../Deck'
+import Game from '../models/Game'
+import Player from '../models/Player'
+import Deck from '../models/Deck'
 
 describe('Game', () => {
   let player
@@ -34,10 +34,6 @@ describe('Game', () => {
 
     it('deals cards to the bots', () => {
       game.bots().forEach(bot => expect(bot.cardsLeft()).toEqual(Game.startingHandCount))
-    })
-
-    it('sets isStarted to true', () => {
-      expect(game.isStarted()).toEqual(true)
     })
   })
 

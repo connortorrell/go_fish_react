@@ -1,4 +1,4 @@
-import Card from "../Card"
+import Card from "../models/Card"
 
 describe('Card', () => {
   const rank = 'A'

@@ -1,9 +1,9 @@
 import React from 'react'
-import PlayView from './PlayView'
-import LobbyView from './LobbyView'
-import GameView from './GameView'
-import Player from './Player'
-import Game from './Game'
+import PlayView from './components/PlayView'
+import LobbyView from './components/LobbyView'
+import GameView from './components/GameView'
+import Player from './models/Player'
+import Game from './models/Game'
 
 class App extends React.Component {
   constructor(props) {
@@ -22,12 +22,14 @@ class App extends React.Component {
 
   _startGame() {
     this.state.game.start()
-    this.forceUpdate()
+    this.setState(() => {
+      return { gameStarted: true }
+    })
   }
 
   render() {
     if(this.state.game) {
-      if(this.state.game.isStarted()) {
+      if(this.state.gameStarted) {
         return <GameView game={this.state.game} />
       } else {
         return <LobbyView game={this.state.game} onStart={this._startGame.bind(this)}/>
