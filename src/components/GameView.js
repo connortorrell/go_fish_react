@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Deck from './Deck'
 import TurnForm from './TurnForm'
 import RoundResultList from './RoundResultList'
+import BookCount from './BookCount'
 
 class GameView extends React.Component {
   static propTypes = {
@@ -16,6 +17,7 @@ class GameView extends React.Component {
       <div>
         <h1>Your turn!</h1>
         <Deck deck={game.deck()} />
+        <BookCount bookCount={game.player().books()} />
         <TurnForm cards={game.player().hand()} opponents={game.bots()} onAsk={onAsk} />
         <RoundResultList roundResults={game.roundResults()} player={game.player()} />
       </div>
