@@ -3,6 +3,8 @@ import Card from "./Card"
 class Deck {
   static ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
   static suits = ['H', 'D', 'C', 'S']
+  static bookLength = 4
+  static totalBooks = 13
 
   constructor() {
     this._cards = this.build()

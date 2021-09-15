@@ -1,8 +1,6 @@
 import Deck from "./Deck"
 
 class Player {
-  static bookLength = 4
-
   constructor(name) {
     this._name = name
     this._hand = []
@@ -45,7 +43,7 @@ class Player {
   updateBooks() {
     Deck.ranks.forEach(rank => {
       const matches = this.hand().filter(card => card.rank() === rank)
-      if(matches.length === Player.bookLength) {
+      if(matches.length === Deck.bookLength) {
         this._hand = this.hand().filter(card => card.rank() !== rank)
         this._books++
       }

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CardList from './CardList'
 import Deck from './Deck'
-import OpponentList from './OpponentList'
+import TurnForm from './TurnForm'
+import RoundResultList from './RoundResultList'
 
 class GameView extends React.Component {
   static propTypes = {
@@ -10,20 +10,14 @@ class GameView extends React.Component {
     onAsk: PropTypes.func.isRequired
   }
 
-  onClick(event) {
-    event.preventDefault()
-    this.props.onAsk()
-  }
-
   render() {
-    const { game } = this.props
+    const { game, onAsk } = this.props
     return (
       <div>
         <h1>Your turn!</h1>
         <Deck deck={game.deck()} />
-        <CardList cards={game.player().hand()} />
-        <OpponentList opponents={game.bots()} />
-        <button id="ask" onClick={this.onClick.bind(this)}>Ask</button>
+        <TurnForm cards={game.player().hand()} opponents={game.bots()} onAsk={onAsk} />
+        <RoundResultList roundResults={game.roundResults()} player={game.player()} />
       </div>
     )
   }

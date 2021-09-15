@@ -11,9 +11,14 @@ class OpponentList extends React.Component {
     return (
       <div>
         <h2>Opponents:</h2>
-        <ul>
-          {opponents.map(opponent => <li key={opponent.name()}>{opponent.name()}</li>)}
-        </ul>
+        {opponents.map(opponent => {
+          return (
+            <div key={opponent.name()}>
+              <input type="radio" id={opponent.name()} name="opponentName" value={opponent.name()} required />
+              <label htmlFor={opponent.name()}>{opponent.name()}</label>
+            </div>
+          )
+        })}
       </div>
     )
   }

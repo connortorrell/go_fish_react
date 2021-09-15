@@ -8,6 +8,7 @@ describe('GameView', () => {
   const name = 'Player1'
   const player = new Player(name)
   const game = new Game(player)
+  const turnForm = require('../components/TurnForm')
   const onAsk = jest.fn()
   let wrapper
 
@@ -34,6 +35,11 @@ describe('GameView', () => {
   })
 
   it('calls onStart prop on form submission', () => {
+    const rank = game.player().hand()[0].rank()
+    const opponentName = game.bots()[0].name()
+
+    fireEvent.click(wrapper.getAllByLabelText(rank)[0])
+    fireEvent.click(wrapper.getByLabelText(opponentName))
     fireEvent.click(wrapper.getByText(/Ask/i))
 
     expect(onAsk).toBeCalled()
