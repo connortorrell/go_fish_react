@@ -3,8 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import GameOverView from '../components/GameOverView'
 import Player from '../models/Player'
 import Game from '../models/Game'
-import Card from '../models/Card'
-import Result from '../models/Result'
 
 describe('GameOverView', () => {
   const name = 'Player1'
