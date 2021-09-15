@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Hand from './Hand'
+import Deck from './Deck'
+import OpponentList from './OpponentList'
 
 class GameView extends React.Component {
   static propTypes = {
@@ -12,8 +14,9 @@ class GameView extends React.Component {
     return (
       <div>
         <h1>Your turn!</h1>
-        <h2>Cards left in deck: {game.deck().cardsLeft()}</h2>
-        <Hand hand={game.player().hand()}/>
+        <Deck deck={game.deck()} />
+        <Hand hand={game.player().hand()} />
+        <OpponentList opponents={game.bots()} />
       </div>
     )
   }

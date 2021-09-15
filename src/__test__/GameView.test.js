@@ -9,21 +9,27 @@ describe('GameView', () => {
   const player = new Player(name)
   const game = new Game(player)
   const onAsk = jest.fn()
+  let wrapper
 
   beforeAll(() => {
     game.start()
   })
 
-  it('shows the number of cards in the deck', () => {
-    const wrapper = render(<GameView game={game} onAsk={onAsk} />)
+  beforeEach(() => {
+    wrapper = render(<GameView game={game} onAsk={onAsk} />)
+  })
 
+  it('shows the number of cards in the deck', () => {
     expect(wrapper.getByText(`Cards left in deck: ${game.deck().cardsLeft()}`)).toBeInTheDocument()
   })
 
   it('shows the player hand', () => {
-    const wrapper = render(<GameView game={game} onAsk={onAsk} />)
-
     expect(wrapper.getByText('Your hand:')).toBeInTheDocument()
     player.hand().forEach(card => expect(wrapper.getAllByText(card.rank())).toBeTruthy())
+  })
+
+  it('shows the opponents', () => {
+    expect(wrapper.getByText('Opponents:')).toBeInTheDocument()
+    game.bots().forEach(bot => expect(wrapper.getByText(bot.name())).toBeInTheDocument())
   })
 })

@@ -4,10 +4,13 @@ import PlayView from '../components/PlayView'
 
 describe('PlayView', () => {
   const onPlay = jest.fn()
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = render(<PlayView onPlay={onPlay} />)
+  })
 
   it('calls onPlay prop on form submission with name', () => {
-    const wrapper = render(<PlayView onPlay={onPlay} />)
-
     fireEvent.change(wrapper.getByLabelText(/Name/i), { target: { value: 'Player1' } })
     fireEvent.click(wrapper.getByText(/Play/i))
 
@@ -16,7 +19,6 @@ describe('PlayView', () => {
   })
 
   it('requires a name to be entered to play', () => {
-    const wrapper = render(<PlayView onPlay={onPlay} />)
     const nameInput = wrapper.getByLabelText(/Name/i)
 
     expect(nameInput.checkValidity()).toEqual(false)
