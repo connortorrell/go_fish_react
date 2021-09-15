@@ -34,7 +34,7 @@ describe('GameView', () => {
     game.bots().forEach(bot => expect(wrapper.getByText(bot.name())).toBeInTheDocument())
   })
 
-  it('calls onStart prop on form submission', () => {
+  it('calls onAsk prop on form submission', () => {
     const rank = game.player().hand()[0].rank()
     const opponentName = game.bots()[0].name()
 
@@ -43,5 +43,23 @@ describe('GameView', () => {
     fireEvent.click(wrapper.getByText(/Ask/i))
 
     expect(onAsk).toBeCalled()
+  })
+
+  it('does not call onAsk prop on form submission if rank is not selected', () => {
+    const opponentName = game.bots()[0].name()
+
+    fireEvent.click(wrapper.getByLabelText(opponentName))
+    fireEvent.click(wrapper.getByText(/Ask/i))
+
+    expect(onAsk).not.toBeCalled()
+  })
+
+  it('does not call onAsk prop on form submission if opponent is not selected', () => {
+    const rank = game.player().hand()[0].rank()
+
+    fireEvent.click(wrapper.getAllByLabelText(rank)[0])
+    fireEvent.click(wrapper.getByText(/Ask/i))
+
+    expect(onAsk).not.toBeCalled()
   })
 })
