@@ -24,12 +24,18 @@ describe('GameView', () => {
   })
 
   it('shows the player hand', () => {
-    expect(wrapper.getByText('Your hand:')).toBeInTheDocument()
+    expect(wrapper.getByText('Your cards:')).toBeInTheDocument()
     player.hand().forEach(card => expect(wrapper.getAllByText(card.rank())).toBeTruthy())
   })
 
   it('shows the opponents', () => {
     expect(wrapper.getByText('Opponents:')).toBeInTheDocument()
     game.bots().forEach(bot => expect(wrapper.getByText(bot.name())).toBeInTheDocument())
+  })
+
+  it('calls onStart prop on form submission', () => {
+    fireEvent.click(wrapper.getByText(/Ask/i))
+
+    expect(onAsk).toBeCalled()
   })
 })

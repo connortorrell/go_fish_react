@@ -27,10 +27,14 @@ class App extends React.Component {
     })
   }
 
+  _ask() {
+    debugger
+  }
+
   render() {
     if(this.state.game) {
       if(this.state.gameStarted) {
-        return <GameView game={this.state.game} />
+        return <GameView game={this.state.game} onAsk={this._ask.bind(this)} />
       } else {
         return <LobbyView game={this.state.game} onStart={this._startGame.bind(this)}/>
       }

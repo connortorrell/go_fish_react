@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BotList from './BotList'
+import Player from './Player'
 
 class LobbyView extends React.Component {
   static propTypes = {
@@ -17,24 +19,9 @@ class LobbyView extends React.Component {
     return (
       <div>
         <h1>Welcome to Go Fish!</h1>
-        {this._renderPlayer(game.player().name())}
-        {this._renderBots(game.bots())}
+        <Player player={game.player()} />
+        <BotList bots={game.bots()} />
         <button id="start" onClick={this.onClick.bind(this)}>Start</button>
-      </div>
-    )
-  }
-
-  _renderPlayer(name) {
-    return <h2>You: {name}</h2>
-  }
-
-  _renderBots(bots) {
-    return (
-      <div>
-        <h2>Bots:</h2>
-        <ul>
-          {bots.map(bot => <li key={bot.name()}>{bot.name()}</li>)}
-        </ul>
       </div>
     )
   }
