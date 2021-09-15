@@ -8,7 +8,6 @@ describe('GameView', () => {
   const name = 'Player1'
   const player = new Player(name)
   const game = new Game(player)
-  const turnForm = require('../components/TurnForm')
   const onAsk = jest.fn()
   let wrapper
 
