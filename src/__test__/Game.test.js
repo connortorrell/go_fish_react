@@ -9,7 +9,7 @@ describe('Game', () => {
 
   beforeEach(() => {
     player = new Player('Player1')
-    game = new Game(player)
+    game = new Game(player, 9)
   })
 
   it('creates with a player', () => {
@@ -74,7 +74,7 @@ describe('Game', () => {
     })
 
     it('returns the player after the bots turns', () => {
-      game._turnIndex = 4
+      game._turnIndex = 10
       expect(game.turnPlayer()).toEqual(game.player())
     })
   })
@@ -210,7 +210,10 @@ describe('Game', () => {
       game.bots()[0]._books = 4
       game.bots()[1]._books = 3
       game.bots()[2]._books = 2
-      expect(game.standings()).toEqual([game.player(), game.bots()[0], game.bots()[1], game.bots()[2]])
+      expect(game.standings()[0]).toEqual(game.player())
+      expect(game.standings()[1]).toEqual(game.bots()[0])
+      expect(game.standings()[2]).toEqual(game.bots()[1])
+      expect(game.standings()[3]).toEqual(game.bots()[2])
     })
   })
 })

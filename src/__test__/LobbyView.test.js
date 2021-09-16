@@ -7,7 +7,7 @@ import Game from '../models/Game'
 describe('LobbyView', () => {
   const name = 'Player1'
   const player = new Player(name)
-  const game = new Game(player)
+  const game = new Game(player, 9)
   const onStart = jest.fn()
   let wrapper
 

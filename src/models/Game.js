@@ -3,10 +3,10 @@ import Deck from './Deck.js'
 import Result from './Result.js'
 
 class Game {
-  static botNames = ['BeepBot', 'ToyBot', 'IBot']
+  static botNames = ['BeepBot', 'ToyBot', 'IBot', 'TeslaBot', 'RoBot', 'BoatBot', 'SpecBot', 'TrevorBot', 'BadBot']
   static startingHandCount = 5
 
-  constructor(player, numberOfBots = 3) {
+  constructor(player, numberOfBots) {
     this._player = player
     this._bots = this._createBots(numberOfBots)
   }

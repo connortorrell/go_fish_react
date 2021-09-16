@@ -16,10 +16,10 @@ class App extends React.Component {
     this.state = {}
   }
 
-  _createGame(name) {
+  _createGame(name, numberOfBots) {
     this.setState(() => {
       const player = new Player(name)
-      const game = new Game(player)
+      const game = new Game(player, numberOfBots)
       return { game }
     })
   }
