@@ -46,7 +46,7 @@ class App extends React.Component {
 
   _playAgain() {
     this.setState(() => {
-      return { game: null, gameStatus: null}
+      return { game: null, gameStatus: null }
     })
   }
 
