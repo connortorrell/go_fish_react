@@ -32,8 +32,10 @@ class Game {
   }
 
   roundResults() {
-    const lastResult = this.results()[this.results().length - 1]
-    return this.results().filter(result => lastResult.endOfTurn() ? this.turnIndex() - result.turnIndex() < this._players().length : (this.turnIndex() + 1) - result.turnIndex() < this._players().length)
+    const reversedResults = [...this.results()].reverse()
+    const lastPlayerResult = reversedResults.find(result => result.turnPlayer() === this.player())
+    const lastPlayerResultIndex = this.results().indexOf(lastPlayerResult)
+    return this.results().slice(lastPlayerResultIndex)
   }
 
   start() {
@@ -49,7 +51,7 @@ class Game {
     if(cardsFished.length === 0) {
       this._endTurn(askedOpponentName, askedRank)
     } else {
-      this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponentName, askedRank, cardsFished, this.isOver()))
+      this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponentName, askedRank, cardsFished))
       this._startTurn()
     }
   }
@@ -91,7 +93,7 @@ class Game {
     if(cardsFished.length === 0) {
       this._endTurn(askedOpponent.name(), askedRank)
     } else {
-      this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponent.name(), askedRank, cardsFished, this.isOver()))
+      this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponent.name(), askedRank, cardsFished))
       this._startTurn()
     }
   }
@@ -99,7 +101,7 @@ class Game {
   _endTurn(askedOpponentName, askedRank) {
     const cardDrawn = this.deck().deal()
     this.turnPlayer().take(cardDrawn)
-    this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponentName, askedRank, cardDrawn, this.isOver()))
+    this._results.push(new Result(this.turnIndex() + 1, this.turnPlayer(), askedOpponentName, askedRank, cardDrawn))
     this._nextTurn()
   }
 
@@ -126,8 +128,6 @@ class Game {
           this._playBotTurn()
         }
       }
-    } else {
-      this._turnIndex++
     }
   }
 }

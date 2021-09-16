@@ -1,11 +1,10 @@
 class Result {
-  constructor(turnIndex, turnPlayer, askedOpponentName, askedRank, cardsFished, over) {
+  constructor(turnIndex, turnPlayer, askedOpponentName, askedRank, cardsFished) {
     this._turnIndex = turnIndex
     this._turnPlayer = turnPlayer
     this._askedOpponentName = askedOpponentName
     this._askedRank = askedRank
     this._cardsFished = cardsFished
-    this._over = over
   }
 
   turnIndex() {
@@ -28,16 +27,8 @@ class Result {
     return this._cardsFished
   }
 
-  over() {
-    return this._over
-  }
-
   drewCard() {
     return !Array.isArray(this.cardsFished()) || this.cardsFished().length === 0
-  }
-
-  endOfTurn() {
-    return this.drewCard() || this.turnPlayer().cardsLeft() === 0
   }
 
   message() {
